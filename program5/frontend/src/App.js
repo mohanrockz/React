@@ -32,6 +32,12 @@ class App extends React.Component {
     }
   }
 
+  removeItem = () => {
+    this.setState(() => ({
+      selectedInventory: null,
+    }))
+  }
+
   render() {
     return (
       <div className="wrapper">
@@ -65,12 +71,14 @@ class App extends React.Component {
         </table>
 
         <hr />
-
-        {this.state.selectedInventory && (
-          <pre className="inventory-details">
-            {JSON.stringify(this.state.selectedInventory, null, 2)}
-          </pre>
-        )}
+        
+        <div onClick={() => this.removeItem()}>
+          {this.state.selectedInventory && (
+            <pre className="inventory-details">
+              {JSON.stringify(this.state.selectedInventory, null, 2)}
+            </pre>
+          )}
+        </div>
       </div>
     );
   }
